@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Mail\NotifyEmail;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 |
  */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -22,3 +21,11 @@ Route::get('/landing', function () {
     return view('landing');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', function () {
+
+    return 'Home';
+});
